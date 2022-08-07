@@ -1,6 +1,10 @@
-require('dotenv').config();
-const cloudinary = require('cloudinary').v2;
-console.log(require('dotenv').config());
-cloudinary.uploader.upload('assets/images/kitten.jpg')
-    .then(uploadResult => console.log(JSON.stringify(uploadResult, null, 2)))
-    .catch(error => console.error(error));
+import { Cloudinary } from "@cloudinary/url-builder"
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: "pmeediting",
+  },
+})
+
+const myImage = cld.image("alhfybhwuby7xvzqi7jo")
+console.log(myImage.toURL())
